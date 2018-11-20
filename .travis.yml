@@ -11,13 +11,8 @@ jobs:
     - stage: build and publish
       language: java
       jdk: openjdk11
-<<<<<<< HEAD
-      before_install:
-        - chmod +x gradlew
-=======
       addons:
         mariadb: '10.2'
->>>>>>> d921f90... Add task for migrating databases
       install: skip
       before_script:
         - mysql -uroot < databases/tracker/create_databases.sql
@@ -25,8 +20,8 @@ jobs:
         - flyway-*/flyway -url="jdbc:mysql://localhost:3306/tracker_test" -locations=filesystem:databases/tracker -user=tracker -password= clean migrate
       script: ./gradlew clean build
       before_deploy:
-        - git config --local user.name "carltonvaz"
-        - git config --local user.email "cvaz95@hotmail.com"
+        - git config --local user.name "Travis CI"
+        - git config --local user.email "travis@example.com"
         - git tag -f $RELEASE_TAG
       deploy:
         provider: releases

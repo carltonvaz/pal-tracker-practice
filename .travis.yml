@@ -23,13 +23,13 @@ jobs:
       deploy:
         provider: releases
         api_key: $GITHUB_OAUTH_TOKEN
-        file: "build/libs/pal-tracker-CI.jar"
+        file: "build/libs/pal-tracker.jar"
         skip_cleanup: true
     - stage: deploy to cf
       language: bash
       script:
         - echo "Downloading $RELEASE_TAG"
-        - wget -P build/libs https://github.com/$GITHUB_USERNAME/pal-tracker-practice/releases/download/$RELEASE_TAG/pal-tracker-CI.jar
+        - wget -P build/libs https://github.com/$GITHUB_USERNAME/pal-tracker-practice/releases/download/$RELEASE_TAG/pal-tracker.jar
       before_deploy:
         - echo "Deploying $RELEASE_TAG to Cloud Foundry"
       deploy:

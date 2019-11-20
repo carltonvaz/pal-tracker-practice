@@ -15,19 +15,19 @@ jobs:
       install: skip
       script: ./gradlew clean build
       before_deploy:
-        - git config --local user.name "Travis CI"
-        - git config --local user.email "travis@example.com"
+        - git config --local user.name "carltonvaz"
+        - git config --local user.email "cvaz95@hotmail.com"
         - git tag -f $RELEASE_TAG
       deploy:
         provider: releases
         api_key: $GITHUB_OAUTH_TOKEN
-        file: "build/libs/pal-tracker.jar"
+        file: "build/libs/pal-tracker-CI.jar"
         skip_cleanup: true
     - stage: deploy to cf
       language: bash
       script:
         - echo "Downloading $RELEASE_TAG"
-        - wget -P build/libs https://github.com/$GITHUB_USERNAME/pal-tracker/releases/download/$RELEASE_TAG/pal-tracker.jar
+        - wget -P build/libs https://github.com/$GITHUB_USERNAME/pal-tracker-practice/releases/download/$RELEASE_TAG/pal-tracker-CI.jar
       before_deploy:
         - echo "Deploying $RELEASE_TAG to Cloud Foundry"
       deploy:

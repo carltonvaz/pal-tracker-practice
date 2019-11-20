@@ -1,10 +1,10 @@
 ---
 applications:
   - name: pal-tracker
-    path: build/libs/pal-tracker.jar
+    path: build/libs/pal-tracker-CI.jar
     routes:
       - route: pal-tracker-silly-eland.cfapps.io
       - route: pal-tracker-silly-elephant.cfapps.io
     env:
-      WELCOME_MESSAGE: Hello from Cloud Foundry
+      WELCOME_MESSAGE: Hello from the review environment
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
